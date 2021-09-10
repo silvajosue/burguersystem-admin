@@ -9,5 +9,9 @@ class BurguersystemApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	
+	@Test
+	void contextLoads() {
+	}
 
 }
