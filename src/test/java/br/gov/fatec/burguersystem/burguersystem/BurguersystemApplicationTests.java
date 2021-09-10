@@ -9,5 +9,10 @@ class BurguersystemApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	
+	//comentário deivid
+	@Test
+	void contextLoads() {
+	}
 
 }
