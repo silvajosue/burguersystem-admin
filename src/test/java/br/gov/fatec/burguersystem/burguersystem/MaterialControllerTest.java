@@ -1,21 +1,24 @@
 package br.gov.fatec.burguersystem.burguersystem;
 
-import br.gov.fatec.burguersystem.burguersystem.controller.MaterialController;
-import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
-import org.junit.Before;
-import org.junit.jupiter.api.Test;
-import org.springframework.http.ResponseEntity;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.ResponseEntity;
+
+import br.gov.fatec.burguersystem.burguersystem.controller.MaterialController;
+import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
+
 public class MaterialControllerTest {
 
-    MaterialController controller;
+    static MaterialController controller;
 
-    @Before
-    public void inicializar(){
+    @BeforeAll
+    public static void inicializar(){
         controller = new MaterialController();
     }
 
@@ -36,6 +39,6 @@ public class MaterialControllerTest {
     @Test
     public void TestaListarPosicaoUmController(){
         ResponseEntity<List<MaterialDTO>> lista = controller.listarTodos();
-        assertEquals(lista.getBody().get(0), "Funciona");
+        assertEquals(lista.getBody().get(0), "Pão de Hamburger");
     }
 }

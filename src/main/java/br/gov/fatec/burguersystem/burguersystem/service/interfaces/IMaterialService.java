@@ -7,4 +7,6 @@ import java.util.List;
 public interface IMaterialService {
 
     List<MaterialDTO> listarTodos();
+
+    void cadastrar(MaterialDTO dto);
 }
