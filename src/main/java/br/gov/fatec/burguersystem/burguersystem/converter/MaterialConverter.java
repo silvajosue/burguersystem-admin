@@ -1,11 +1,12 @@
 package br.gov.fatec.burguersystem.burguersystem.converter;
 
-import br.gov.fatec.burguersystem.burguersystem.model.Material;
-import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import br.gov.fatec.burguersystem.burguersystem.model.Material;
+import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
 
 @Component
 public class MaterialConverter {
