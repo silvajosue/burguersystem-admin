@@ -3,6 +3,9 @@ package br.gov.fatec.burguersystem.burguersystem.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
+import br.gov.fatec.burguersystem.burguersystem.service.MaterialService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +19,11 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping(value = "/material")
 public class MaterialController {
 
+	@Autowired
+	MaterialService service;
 	@ApiOperation(value = "Metodo responsável por requisitar todos os materiais presentes na base de dados")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<String>> listarTodos() {
-		List<String> lista = new ArrayList<>();
-		lista.add("Funciona");
-		lista.add("Olha olha");
-		return ResponseEntity.ok(lista);
+	public ResponseEntity<List<MaterialDTO>> listarTodos() {
+		return ResponseEntity.ok(service.listarTodos());
 	}
 }
