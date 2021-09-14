@@ -8,27 +8,27 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
-import br.gov.fatec.burguersystem.burguersystem.service.MaterialService;
+import br.gov.fatec.burguersystem.burguersystem.model.dto.ProdutoDTO;
+import br.gov.fatec.burguersystem.burguersystem.service.ProdutoService;
 import io.swagger.annotations.ApiOperation;
 
 @ApiOperation(value = "Controller utilizado para o contexto negocial da Marca")
 @RestController
-@RequestMapping(value = "/material")
-public class MaterialController {
+@RequestMapping(value = "/produto")
+public class ProdutoController {
 
 	@Autowired
-	MaterialService service;
+	ProdutoService service;
 
-	@ApiOperation(value = "Metodo responsável por requisitar todos os materiais presentes na base de dados")
+	@ApiOperation(value = "Metodo responsável por requisitar todos os produtos presentes na base de dados")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<MaterialDTO>> listarTodos() {
+	public ResponseEntity<List<ProdutoDTO>> listarTodos() {
 		return ResponseEntity.ok(service.listarTodos());
 	}
 
-	@ApiOperation(value = "Metodo responsável por cadastrar novos materiais na base de dados")
+	@ApiOperation(value = "Metodo responsável por cadastrar novos produtos na base de dados")
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<HttpStatus> cadastrarMaterial(@RequestBody MaterialDTO dto) {
+	public ResponseEntity<HttpStatus> cadastrarProduto(@RequestBody ProdutoDTO dto) {
 		service.cadastrar(dto);
 		return ResponseEntity.ok(HttpStatus.OK);
 	}
