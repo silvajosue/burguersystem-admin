@@ -9,4 +9,7 @@ public interface IMaterialService {
     List<MaterialDTO> listarTodos();
 
     void cadastrar(MaterialDTO dto);
+
+    void atualizar(MaterialDTO dto);
+
 }

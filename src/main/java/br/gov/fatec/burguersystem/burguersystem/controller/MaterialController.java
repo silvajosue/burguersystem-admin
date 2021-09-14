@@ -26,10 +26,17 @@ public class MaterialController {
 		return ResponseEntity.ok(service.listarTodos());
 	}
 
-	@ApiOperation(value = "Metodo responsável por cadastrarnovos materiais na base de dados")
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "Metodo responsável por cadastrar novos materiais na base de dados")
+	@PostMapping(path = "/cadastrarMaterial", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<HttpStatus> cadastrarMaterial(@RequestBody MaterialDTO dto) {
 		service.cadastrar(dto);
+		return ResponseEntity.ok(HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Metodo responsável por atualizar materiais na base de dados")
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<HttpStatus> atualizarMaterial(@RequestBody MaterialDTO dto) {
+		service.atualizar(dto);
 		return ResponseEntity.ok(HttpStatus.OK);
 	}
 

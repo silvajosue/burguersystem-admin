@@ -6,10 +6,12 @@ import br.gov.fatec.burguersystem.burguersystem.model.Material;
 import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
 import br.gov.fatec.burguersystem.burguersystem.repository.MaterialRepository;
 import br.gov.fatec.burguersystem.burguersystem.service.interfaces.IMaterialService;
+import br.gov.fatec.burguersystem.burguersystem.utils.MensagensUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 @Service
@@ -48,13 +50,32 @@ public class MaterialService implements IMaterialService {
 
     }
 
+    // Metodo responsavel por validar os dados e realizar a atualização dos dados na base
+    @Override
+    @Transactional
+    public void atualizar(MaterialDTO dto) {
+
+        Material material = converter.toDtoToEntity(dto);
+
+        repository.save(material);
+    }
+
+    // Metodo responsavel por validar os dados de entrada dos materiais.
     private void validarDadosObrigatorios(MaterialDTO dto) {
         if(!StringUtils.isBlank(dto.getNome())){
             List<Material> lista = repository.findAll();
             for (Material material : lista ) {
                 if(material.getNome().toUpperCase().equals(dto.getNome().toUpperCase()))
-                    throw new NegocioException("Material ja existente na base de dados");
+                    throw new NegocioException(MensagensUtils.DADO_EXISTENTE);
             }
+        }
+
+        if (dto.getPreco() < 0.0){
+            throw new NegocioException(MensagensUtils.VALOR_MENOR_ZERO);
+        }
+
+        if(dto.getQuantidade() < 0.0){
+            throw new NegocioException(MensagensUtils.QTD_MENOR_ZERO);
         }
     }
 }
