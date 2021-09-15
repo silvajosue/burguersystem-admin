@@ -1,43 +1,56 @@
-//package br.com.alura.forum.controller;
-//
-//import javax.validation.Valid;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.AuthenticationException;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//import br.com.alura.forum.config.security.TokenService;
-//import br.com.alura.forum.controller.dto.TokenDto;
-//import br.com.alura.forum.controller.form.LoginForm;
-//
-//@RestController
-//@RequestMapping("/auth")
-//public class AutenticacaoController {
-//	
-//	@Autowired
-//	private AuthenticationManager authManager;
-//	
-//	@Autowired
-//	private TokenService tokenService;
-//
-//	@PostMapping
-//	public ResponseEntity<TokenDto> autenticar(@RequestBody @Valid LoginForm form) {
-//		UsernamePasswordAuthenticationToken dadosLogin = form.converter();
-//		
-//		try {
-//			Authentication authentication = authManager.authenticate(dadosLogin);
-//			String token = tokenService.gerarToken(authentication);
-//			return ResponseEntity.ok(new TokenDto(token, "Bearer"));
-//		} catch (AuthenticationException e) {
-//			return ResponseEntity.badRequest().build();
-//		}
-//	}
-//	
-//}
+package br.gov.fatec.burguersystem.burguersystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.gov.fatec.burguersystem.burguersystem.config.security.TokenService;
+import br.gov.fatec.burguersystem.burguersystem.model.dto.LoginDTO;
+import br.gov.fatec.burguersystem.burguersystem.model.dto.TokenDTO;
+import br.gov.fatec.burguersystem.burguersystem.model.dto.UsuarioDTO;
+import br.gov.fatec.burguersystem.burguersystem.service.interfaces.IUsuarioService;
+
+
+
+@RestController
+@RequestMapping("/login")
+public class AutenticacaoController {
+	
+	@Autowired
+	private AuthenticationManager authManager;
+	
+	@Autowired
+	private TokenService tokenService;
+	
+	@Autowired
+	private IUsuarioService usuarioService;
+
+	@PostMapping
+	public ResponseEntity<UsuarioDTO> autenticar(@RequestBody LoginDTO login) {
+		UsernamePasswordAuthenticationToken dadosLogin = login.converter();
+		
+		try {
+			Authentication authentication = authManager.authenticate(dadosLogin);
+			String token = tokenService.gerarToken(authentication);
+			UsuarioDTO dto = recuperaUsuario(login);
+			dto.setTokenDTO(new TokenDTO(token, "Bearer "));
+			return ResponseEntity.ok(dto);
+		} catch (AuthenticationException e) {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+
+	private UsuarioDTO recuperaUsuario(LoginDTO login) {
+		UsuarioDTO dto = usuarioService.findByEmail(login.getEmail());
+		dto.setEmail(login.getEmail());
+		return dto;
+	}
+	
+}

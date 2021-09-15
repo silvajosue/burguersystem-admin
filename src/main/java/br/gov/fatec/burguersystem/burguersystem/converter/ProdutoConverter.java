@@ -23,13 +23,12 @@ public class ProdutoConverter {
 
     private ProdutoDTO toEntityToDto(Produto produto) {
         
-        ProdutoDTO dto = new Produto();
+        ProdutoDTO dto = new ProdutoDTO();
         dto.setId(produto.getId());
-        dto.setCategoria(produto.getCodCategoria());
+        dto.setCodCategoria(produto.getCodCategoria());
         dto.setNome(produto.getNome());
         dto.setPreco(produto.getPreco());
         dto.setFoto(produto.getFoto());
-        dto.setQuantidade(produto.getQuantidade());
 
         return dto;
     }
@@ -37,11 +36,10 @@ public class ProdutoConverter {
     public Produto toDtoToEntity(ProdutoDTO dto) {
 
         Produto produto = new Produto();
-        produto.setCategoria(dto.getCodCategoria());
+        produto.setCodCategoria(dto.getCodCategoria());
         produto.setNome(dto.getNome());
         produto.setPreco(dto.getPreco());
         produto.setFoto(dto.getFoto());
-        produto.setQuantidade(dto.getQuantidade());
 
         return produto;
     }

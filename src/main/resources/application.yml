@@ -19,3 +19,9 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
+      
+      # jwt
+jwt:
+  secret: eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYzMTY2MjQ2MCwiaWF0IjoxNjMxNjYyNDYwfQ.nakWSr4rc1nkHma5kmM2cuTc-H4GaXOkA9d08n2g0Hg
+  expiration: 86400000
+      

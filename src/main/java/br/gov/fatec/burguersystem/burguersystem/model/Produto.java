@@ -30,7 +30,4 @@ public class Produto {
     @Column(name = "FOTO")
     private String foto;
 
-    @Column(name = "QUANTIDADE_EST")
-    private Double quantidade;
-
 }
