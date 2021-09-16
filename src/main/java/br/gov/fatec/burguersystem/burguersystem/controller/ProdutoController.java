@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiOperation;
 
 @ApiOperation(value = "Controller utilizado para o contexto negocial da Marca")
 @RestController
-@RequestMapping(value = "/produto")
+@RequestMapping(value = "/api/produto")
 public class ProdutoController {
 
 	@Autowired

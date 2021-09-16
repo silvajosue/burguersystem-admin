@@ -1,5 +1,6 @@
 package br.gov.fatec.burguersystem.burguersystem.config.security;
 
+import br.gov.fatec.burguersystem.burguersystem.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,12 +14,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import br.gov.fatec.burguersystem.burguersystem.repository.UsuarioRepository;
+import java.util.Arrays;
 
 
 @EnableWebSecurity
 @Configuration
+@CrossOrigin(origins = "http://localhost")
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -48,11 +57,14 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.POST, "/login").permitAll()
-		.antMatchers(HttpMethod.GET, "/material/*").permitAll()
-//		.antMatchers(HttpMethod.POST, "/auth").permitAll()
-//		.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
-		.antMatchers(HttpMethod.DELETE, "/topicos/*").hasRole("GARCOM")
-		.anyRequest().anonymous() // mudar para authenticated
+		.antMatchers(HttpMethod.GET, "/api/pedido").hasRole("GARCOM")
+		.antMatchers(HttpMethod.GET, "/api/*").hasRole("GERENTE")
+		.antMatchers(HttpMethod.POST, "/api/*").hasRole("GERENTE")
+		.antMatchers(HttpMethod.PUT, "/api/*").hasRole("GERENTE")
+		.antMatchers(HttpMethod.DELETE, "/api/*").hasRole("GERENTE")
+		.antMatchers(HttpMethod.GET, "/api/produto").hasRole("ATENDENTE")
+		.anyRequest().authenticated() // mudar para authenticated
+		.and().cors()
 		.and().csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
@@ -63,6 +75,22 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
+	}
+
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedMethods("*")
+						.allowedHeaders("*")
+						.allowCredentials(false)
+						.maxAge(3600);
+			}
+		};
 	}
 	
 }
