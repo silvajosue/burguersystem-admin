@@ -27,6 +27,9 @@ public class Produto {
     @Column(name = "PRECO")
     private Double preco;
 
+    @Column(name = "QUANTIDADE_EST")
+    private Long quantidadeEst;
+
     @Column(name = "FOTO")
     private String foto;
 

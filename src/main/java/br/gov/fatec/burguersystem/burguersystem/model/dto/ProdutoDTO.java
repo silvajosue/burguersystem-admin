@@ -11,6 +11,7 @@ public class ProdutoDTO {
     private Long codCategoria;
     private String nome;
     private Double preco;
+    private Long quantidadeEst;
     private String foto;
 
 }

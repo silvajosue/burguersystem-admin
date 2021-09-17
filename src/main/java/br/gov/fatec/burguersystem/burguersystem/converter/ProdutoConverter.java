@@ -28,6 +28,7 @@ public class ProdutoConverter {
         dto.setCodCategoria(produto.getCodCategoria());
         dto.setNome(produto.getNome());
         dto.setPreco(produto.getPreco());
+        dto.setQuantidadeEst(produto.getQuantidadeEst());
         dto.setFoto(produto.getFoto());
 
         return dto;
@@ -39,6 +40,7 @@ public class ProdutoConverter {
         produto.setCodCategoria(dto.getCodCategoria());
         produto.setNome(dto.getNome());
         produto.setPreco(dto.getPreco());
+        produto.setQuantidadeEst(dto.getQuantidadeEst());
         produto.setFoto(dto.getFoto());
 
         return produto;
