@@ -27,7 +27,7 @@ public class MaterialControllerTest {
 
     @Test
     public void TestaListarControllerNãoNulo() throws Exception{
-    		URI uri = new URI("/material");
+    		URI uri = new URI("/api/material");
     		
     		mockMvc
     		.perform(MockMvcRequestBuilders

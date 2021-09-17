@@ -27,7 +27,7 @@ public class ProdutoController {
 	}
 
 	@ApiOperation(value = "Metodo responsável por cadastrar novos produtos na base de dados")
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "cadastrarProduto", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<HttpStatus> cadastrarProduto(@RequestBody ProdutoDTO dto) {
 		service.cadastrar(dto);
 		return ResponseEntity.ok(HttpStatus.OK);
