@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 /**
  * <Author> Émerson Junior</Author>
- * Definição dos atributos referentes aos materiais
+ * Definição dos atributos referentes aos produtos
  *
  */
 @Data // Anotação do lombok para criação de getters and setters
