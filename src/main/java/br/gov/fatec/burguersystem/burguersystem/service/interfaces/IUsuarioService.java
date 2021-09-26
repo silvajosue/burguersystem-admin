@@ -6,4 +6,5 @@ public interface IUsuarioService {
 
 	UsuarioDTO findByEmail(String email);
 
+    void cadastrar(UsuarioDTO dto);
 }

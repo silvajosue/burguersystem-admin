@@ -53,8 +53,8 @@ public class ComposicaoControllerTest {
 		
         //Vincula o material 1 com o produto 1
 		ComposicaoDTO composicao = new ComposicaoDTO();
-		composicao.setCodProduto(1);
-		composicao.setCodMaterial(1);
+		composicao.setCodProduto(1L);
+		composicao.setCodMaterial(1L);
 		composicao.setQuantidade(0.06);
 		composicao.setUnidadeMedida("KG");
 		
