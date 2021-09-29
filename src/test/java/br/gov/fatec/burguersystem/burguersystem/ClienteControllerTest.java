@@ -63,7 +63,7 @@ public class ClienteControllerTest {
 		EnderecoDTO endereco = new EnderecoDTO();
         endereco.setCodCliente(cliente.getId());
         endereco.setLogradouro("Rua 5");
-        endereco.setNumero(500);
+        endereco.setNumero(500L);
         endereco.setBairro("Bairro 5");
         endereco.setCidade("São Paulo");
         endereco.setComplemento("Apartamento 5-5");

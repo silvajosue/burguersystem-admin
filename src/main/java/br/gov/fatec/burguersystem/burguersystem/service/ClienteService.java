@@ -62,7 +62,7 @@ public class ClienteService implements IClienteService {
 
     // Metodo responsavel por validar os dados de entrada de cliente.
     private void validarDadosObrigatorios(ClienteDTO dto) {
-        if(dto.getCpf()){
+        if(StringUtils.isBlank(dto.getCpf())){
             List<Cliente> lista = repository.findAll();
             for(Cliente cliente : lista ) {
                 if(cliente.getCpf().equals(dto.getCpf()))

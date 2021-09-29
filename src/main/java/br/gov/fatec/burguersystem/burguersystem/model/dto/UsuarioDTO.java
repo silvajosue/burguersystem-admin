@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,5 +19,6 @@ public class UsuarioDTO {
 	private String role;
 	private TokenDTO tokenDTO;
 	private Long tempoSessao;
+	public RoleDTO roles;
 
 }

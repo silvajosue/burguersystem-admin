@@ -44,7 +44,7 @@ public class UsuarioConverter {
 		Set<Role> roles = new HashSet<>();
 		Role r = new Role();
 		r.setNome(dto.getRole());
-		r.setId(dto.getCodigoUsuario());
+		r.setId(dto.getRoles().getId());
 		roles.add(r);
 		usuario.setRoles(roles);
 		return usuario;

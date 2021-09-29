@@ -39,8 +39,8 @@ public class EnderecoConverter {
         endereco.setLogradouro(dto.getLogradouro());
         endereco.setNumero(dto.getNumero());
         endereco.setBairro(dto.getBairro());
-        endereco.setCidade(dto.setCidade());
-        endereco.setComplemento(dto.setComplemento());
+        endereco.setCidade(dto.getCidade());
+        endereco.setComplemento(dto.getComplemento());
 
         return endereco;
     }
