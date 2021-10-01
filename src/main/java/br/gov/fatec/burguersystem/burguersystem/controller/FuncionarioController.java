@@ -7,6 +7,7 @@ import br.gov.fatec.burguersystem.burguersystem.model.dto.UsuarioDTO;
 import br.gov.fatec.burguersystem.burguersystem.service.interfaces.IUsuarioService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,11 +29,11 @@ public class FuncionarioController {
 
 	@PostMapping(path = "cadastrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Endpoint utilizado para cadastrar novos funcionarios na base de dados")
-	public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody UsuarioDTO dto) {
+	public ResponseEntity<HttpStatus> cadastrar(@RequestBody UsuarioDTO dto) {
 
 		try {
 			usuarioService.cadastrar(dto);
-			return ResponseEntity.ok(dto);
+			return ResponseEntity.ok(HttpStatus.OK);
 		} catch (AuthenticationException e) {
 			return ResponseEntity.badRequest().build();
 		}

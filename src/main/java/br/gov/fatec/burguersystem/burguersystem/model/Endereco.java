@@ -19,8 +19,9 @@ public class Endereco {
 	@Column(name = "COD_ENDERECO")
 	private Long id;
 
-	@Column(name = "COD_CLIENTE")
-	private Long codCliente;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "COD_CLIENTE")
+	private Cliente cliente;
 	
 	@Column(name = "LOGRADOURO")
 	private String logradouro;

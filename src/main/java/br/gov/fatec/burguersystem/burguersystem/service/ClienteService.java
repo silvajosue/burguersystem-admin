@@ -57,7 +57,8 @@ public class ClienteService implements IClienteService {
     @Override
     @Transactional
     public void atualizar(ClienteDTO dto) {
-        dto.atualizar(this);
+        Cliente cliente = converter.toDtoToEntity(dto);
+        repository.save(cliente);
     }
 
     // Metodo responsavel por validar os dados de entrada de cliente.
