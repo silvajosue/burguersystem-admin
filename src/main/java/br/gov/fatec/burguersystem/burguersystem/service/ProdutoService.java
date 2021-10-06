@@ -47,7 +47,16 @@ public class ProdutoService implements IProdutoService {
         repository.save(produto);
 
     }
+    
+    // Metodo responsavel por validar os dados e realizar a atualização dos dados na base
+    @Override
+    @Transactional
+    public void atualizar(ProdutoDTO dto) {
+        Produto produto = converter.toDtoToEntity(dto);
+        repository.save(produto);
+    }
 
+    // Metodo responsavel por validar os dados de entrada de produtos.
     private void validarDadosObrigatorios(ProdutoDTO dto) {
         if(!StringUtils.isBlank(dto.getNome())){
             List<Produto> lista = repository.findAll();

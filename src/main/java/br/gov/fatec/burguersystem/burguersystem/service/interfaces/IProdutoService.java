@@ -9,4 +9,6 @@ public interface IProdutoService {
     List<ProdutoDTO> listarTodos();
 
     void cadastrar(ProdutoDTO dto);
+
+    void atualizar(ProdutoDTO dto);
 }
