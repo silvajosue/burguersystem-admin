@@ -11,12 +11,13 @@ import javax.persistence.*;
  */
 
 @Data
-@Entity(name = "CLIENTE")
+@Entity
+@Table(name = "CLIENTE")
 public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "COD_CLIENTE")
+	@Column(name = "cod_cliente")
 	private Long id;
 	
 	@Column(name = "NOME")

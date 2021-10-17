@@ -61,7 +61,7 @@ public class ClienteControllerTest {
 
         //TODO criar uma maneira de conseguir cadastrar varios endereços para o mesmo cliente
 		EnderecoDTO endereco = new EnderecoDTO();
-        endereco.setCodCliente(cliente.getId());
+//        endereco.setCodCliente(cliente.getId());
         endereco.setLogradouro("Rua 5");
         endereco.setNumero(500L);
         endereco.setBairro("Bairro 5");

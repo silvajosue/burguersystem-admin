@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import org.springframework.format.datetime.standard.DateTimeContext;
 
+import java.util.Date;
+
 /**
  * <Author> Émerson Junior</Author>
  * Definição dos atributos referentes aos status dos pedidos
@@ -27,7 +29,7 @@ public class PedidoComStatus {
     private String status;
 
     @Column(name = "DHPEDIDO")
-    private DateTimeContext dhpedido;
+    private Date dhpedido;
 
 }
 //TODO dhpedido deve ter o tipo DATETIME do banco

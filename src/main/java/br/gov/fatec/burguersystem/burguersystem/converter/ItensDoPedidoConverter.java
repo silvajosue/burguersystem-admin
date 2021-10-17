@@ -26,7 +26,7 @@ public class ItensDoPedidoConverter {
         ItensDoPedidoDTO dto = new ItensDoPedidoDTO();
         dto.setId(itensDoPedido.getId());
         dto.setCodPedido(itensDoPedido.getCodPedido());
-        dto.setCodProduto(itensDoPedido.getCodProduto());
+        dto.setCodPedido(itensDoPedido.getCodPedido());
         dto.setQuantidade(itensDoPedido.getQuantidade());
         dto.setObservacao(itensDoPedido.getObservacao());
 
@@ -37,7 +37,7 @@ public class ItensDoPedidoConverter {
 
         ItensDoPedido itensDoPedido = new ItensDoPedido();
         itensDoPedido.setCodPedido(dto.getCodPedido());
-        itensDoPedido.setCodProduto(dto.getCodProduto());
+        itensDoPedido.setCodPedido(dto.getCodPedido());
         itensDoPedido.setQuantidade(dto.getQuantidade());
         itensDoPedido.setObservacao(dto.getObservacao());
 

@@ -1,8 +1,8 @@
 package br.gov.fatec.burguersystem.burguersystem.model.dto;
 
-import org.springframework.format.datetime.standard.DateTimeContext;
-
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 public class PedidoComStatusDTO {
@@ -12,7 +12,7 @@ public class PedidoComStatusDTO {
     private Long id;
     private Long codPedido;
     private String status;
-    private DateTimeContext dhpedido;
+    private Date dhpedido;
 
 }
 //TODO dhpedido deve ter o tipo DATETIME do banco

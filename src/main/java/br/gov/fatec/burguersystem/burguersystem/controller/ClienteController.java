@@ -28,9 +28,9 @@ public class ClienteController {
 
 	@ApiOperation(value = "Metodo responsável por cadastrar novos clientes na base de dados")
 	@PostMapping(path = "/cadastrarCliente", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<HttpStatus> cadastraCliente(@RequestBody ClienteDTO dto) {
-		service.cadastrar(dto);
-		return ResponseEntity.ok(HttpStatus.OK);
+	public ResponseEntity<ClienteDTO> cadastraCliente(@RequestBody ClienteDTO dto) {
+		ClienteDTO cliente = service.cadastrar(dto);
+		return ResponseEntity.ok(cliente);
 	}
 
 	@ApiOperation(value = "Metodo responsável por atualizar os clientes na base de dados")

@@ -8,11 +8,10 @@ import br.gov.fatec.burguersystem.burguersystem.repository.PedidoComStatusReposi
 import br.gov.fatec.burguersystem.burguersystem.service.interfaces.IPedidoComStatusService;
 import br.gov.fatec.burguersystem.burguersystem.utils.MensagensUtils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import antlr.StringUtils;
 
 import java.util.List;
 
@@ -63,10 +62,10 @@ public class PedidoComStatusService implements IPedidoComStatusService {
 
     private void validarDadosObrigatorios(PedidoComStatusDTO dto) {
         //Verifica se o status está sendo criado em um pedido que ja tenha um status
-        if(!StringUtils.isBlank(dto.getCodPedido())){
+        if(dto.getCodPedido() != null){
             List<PedidoComStatus> lista = repository.findAll();
             for (PedidoComStatus pedidoComStatus : lista ) {
-                if(pedidoComStatus.getCodPedido.equals(dto.getCodPedido()))
+                if(pedidoComStatus.getCodPedido().equals(dto.getCodPedido()))
                     throw new NegocioException(MensagensUtils.DADO_EXISTENTE);
             }
         }

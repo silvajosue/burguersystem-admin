@@ -20,7 +20,7 @@ public class ClienteConverter {
         return listDto;
     }
 
-    private ClienteDTO toEntityToDto(Cliente cliente) {
+    public ClienteDTO toEntityToDto(Cliente cliente) {
         ClienteDTO dto = new ClienteDTO();
         dto.setId(cliente.getId());
         dto.setNome(cliente.getNome());
@@ -32,6 +32,7 @@ public class ClienteConverter {
     public Cliente toDtoToEntity(ClienteDTO dto) {
 
         Cliente cliente = new Cliente();
+        cliente.setId(dto.getId());
         cliente.setNome(dto.getNome());
         cliente.setTelefone(dto.getTelefone());
         cliente.setCpf(dto.getCpf());

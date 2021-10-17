@@ -7,7 +7,6 @@ import br.gov.fatec.burguersystem.burguersystem.model.Cliente;
 import br.gov.fatec.burguersystem.burguersystem.model.dto.ClienteDTO;
 import br.gov.fatec.burguersystem.burguersystem.repository.ClienteRepository;
 import br.gov.fatec.burguersystem.burguersystem.service.interfaces.IClienteService;
-import br.gov.fatec.burguersystem.burguersystem.utils.MensagensUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +42,7 @@ public class ClienteService implements IClienteService {
     // Metodo responsavel por cadastrar um novo cliente na base de dados
     @Override
     @Transactional
-    public void cadastrar(ClienteDTO dto) {
+    public ClienteDTO cadastrar(ClienteDTO dto) {
 
         validarDadosObrigatorios(dto);
 
@@ -51,6 +50,7 @@ public class ClienteService implements IClienteService {
 
         repository.save(cliente);
 
+        return converter.toEntityToDto(cliente);
     }
 
     // Metodo responsavel por validar os dados e realizar a atualização dos dados na base

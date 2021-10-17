@@ -8,7 +8,7 @@ public interface IClienteService {
 
     List<ClienteDTO> listarTodos();
 
-    void cadastrar(ClienteDTO dto);
+    ClienteDTO cadastrar(ClienteDTO dto);
 
     void atualizar(ClienteDTO dto);
 }

@@ -11,7 +11,8 @@ import javax.persistence.*;
  */
 
 @Data
-@Entity(name = "ENDERECO")
+@Entity
+@Table(name = "ENDERECO")
 public class Endereco {
 	
 	@Id
@@ -20,7 +21,7 @@ public class Endereco {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "COD_CLIENTE")
+	@JoinColumn(name = "cod_cliente")
 	private Cliente cliente;
 	
 	@Column(name = "LOGRADOURO")
