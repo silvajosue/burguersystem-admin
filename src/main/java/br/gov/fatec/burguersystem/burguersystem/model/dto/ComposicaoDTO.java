@@ -8,8 +8,8 @@ public class ComposicaoDTO {
     // TODO Copia exata da classe Composicao
 
     private Long id;
-    private Long codProduto;
-    private Long codMaterial;
+    private ProdutoDTO produto;
+    private MaterialDTO material;
     private Double quantidade;
     private String unidadeMedida;
 	

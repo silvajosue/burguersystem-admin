@@ -14,7 +14,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 
 	@ExceptionHandler(NegocioException.class)
 	protected ResponseEntity<Object> handleSecurity(NegocioException ex, WebRequest request) {
-		return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR,
+		return handleExceptionInternal(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND,
 				request);
 	}
 

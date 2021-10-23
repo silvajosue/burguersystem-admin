@@ -8,5 +8,5 @@ public interface ICategoriaService {
 
     List<CategoriaDTO> listarTodos();
 
-    void cadastrar(CategoriaDTO dto);
+    CategoriaDTO cadastrar(CategoriaDTO dto);
 }

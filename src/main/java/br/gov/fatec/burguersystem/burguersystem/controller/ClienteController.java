@@ -12,7 +12,7 @@ import br.gov.fatec.burguersystem.burguersystem.model.dto.ClienteDTO;
 import br.gov.fatec.burguersystem.burguersystem.service.ClienteService;
 import io.swagger.annotations.ApiOperation;
 
-@ApiOperation(value = "Controller utilizado para o contexto negocial da Marca")
+@ApiOperation(value = "Controller utilizado para o contexto negocial do Cliente")
 @RestController
 @RequestMapping(value = "api/cliente")
 public class ClienteController {

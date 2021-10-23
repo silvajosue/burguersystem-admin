@@ -40,7 +40,7 @@ public class CategoriaService implements ICategoriaService {
     // Metodo responsavel por cadastrar uma nova categoria na base de dados
     @Override
     @Transactional
-    public void cadastrar(CategoriaDTO dto) {
+    public CategoriaDTO cadastrar(CategoriaDTO dto) {
 
         validarDadosObrigatorios(dto);
 
@@ -48,6 +48,7 @@ public class CategoriaService implements ICategoriaService {
 
         repository.save(categoria);
 
+        return converter.toEntityToDto(categoria);
     }
 
     // Metodo responsavel por validar os dados de entrada das categorias.

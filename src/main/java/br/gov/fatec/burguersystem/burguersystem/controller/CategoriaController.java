@@ -28,9 +28,9 @@ public class CategoriaController {
 
 	@ApiOperation(value = "Metodo responsável por cadastrar novas categorias na base de dados")
 	@PostMapping(path = "/cadastrarCategoria", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<HttpStatus> cadastraCategoria(@RequestBody CategoriaDTO dto) {
-		service.cadastrar(dto);
-		return ResponseEntity.ok(HttpStatus.OK);
+	public ResponseEntity<CategoriaDTO> cadastraCategoria(@RequestBody CategoriaDTO dto) {
+		CategoriaDTO categoriaDTO = service.cadastrar(dto);
+		return ResponseEntity.ok(categoriaDTO);
 	}
 
 }

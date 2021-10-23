@@ -20,7 +20,7 @@ public class CategoriaConverter {
         return listDto;
     }
 
-    private CategoriaDTO toEntityToDto(Categoria categoria) {
+    public CategoriaDTO toEntityToDto(Categoria categoria) {
         CategoriaDTO dto = new CategoriaDTO();
         dto.setId(categoria.getId());
         dto.setNome(categoria.getNome());
@@ -30,6 +30,7 @@ public class CategoriaConverter {
     public Categoria toDtoToEntity(CategoriaDTO dto) {
 
         Categoria categoria = new Categoria();
+        categoria.setId(dto.getId());
         categoria.setNome(dto.getNome());
         return categoria;
     }

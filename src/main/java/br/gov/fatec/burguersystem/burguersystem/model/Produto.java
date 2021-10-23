@@ -18,8 +18,9 @@ public class Produto {
     @Column(name = "COD_PRODUTO")
     private Long id;
 
-    @Column(name = "COD_CATEGORIA") //TODO Front mostra a categoria para o usuário selecionar
-    private Long codCategoria;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "COD_CATEGORIA")
+    private Categoria categoria;
 
     @Column(name = "NOME")
     private String nome;

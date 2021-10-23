@@ -18,11 +18,13 @@ public class Composicao {
     @Column(name = "COD_COMPOSICAO")
     private Long id;
 
-    @Column(name = "COD_PRODUTO")
-    private Long codProduto;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "COD_PRODUTO")
+    private Produto produto;
 
-    @Column(name = "COD_MATERIAL")
-    private Long codMaterial;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "COD_MATERIAL")
+    private Material material;
 
     @Column(name = "QUANTIDADE")
     private Double quantidade;

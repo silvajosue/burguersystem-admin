@@ -8,7 +8,7 @@ public class ProdutoDTO {
     // TODO Copia exata da classe Produto
 
     private Long id;
-    private Long codCategoria;
+    private CategoriaDTO categoria;
     private String nome;
     private Double preco;
     private Long quantidadeEst;

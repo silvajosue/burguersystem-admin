@@ -21,7 +21,7 @@ public class MaterialConverter {
         return listDto;
     }
 
-    private MaterialDTO toEntityToDto(Material material) {
+    public MaterialDTO toEntityToDto(Material material) {
         MaterialDTO dto = new MaterialDTO();
         dto.setId(material.getId());
         dto.setNome(material.getNome());
