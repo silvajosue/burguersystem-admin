@@ -64,6 +64,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.GET, "/api/produto").hasRole("ATENDENTE")
 		.antMatchers(HttpMethod.POST, "/api/funcionario").hasRole("GERENTE")
 		.antMatchers(HttpMethod.GET, "/api/funcionario").hasRole("GERENTE")
+		.antMatchers(HttpMethod.GET, "/api/composicao").hasRole("COZINHEIRO")
+		.antMatchers(HttpMethod.GET, "/api/pedido").hasRole("ENTREGADOR")
+		.antMatchers(HttpMethod.GET, "/api/pedido").hasRole("ATENDENTE")
 		.anyRequest().authenticated() // mudar para authenticated
 		.and().cors()
 		.and().csrf().disable()

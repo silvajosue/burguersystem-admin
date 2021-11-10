@@ -41,4 +41,14 @@ public class MaterialConverter {
 
         return material;
     }
+
+    public List<Material> toListDtoToEntity(List<MaterialDTO> lista) {
+        List<Material> list = new ArrayList<>();
+        for (MaterialDTO dto : lista) {
+            Material mat = toDtoToEntity(dto);
+            list.add(mat);
+        }
+
+        return list;
+    }
 }

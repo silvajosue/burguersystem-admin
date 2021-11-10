@@ -1,8 +1,12 @@
 package br.gov.fatec.burguersystem.burguersystem.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * <Author> Émerson Junior</Author>
@@ -10,6 +14,9 @@ import javax.persistence.*;
  *
  */
 @Data // Anotação do lombok para criação de getters and setters
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 @Entity(name = "COMPOSICAO") // TODO Colocar o nome da entidade do banco
 public class Composicao {
 
@@ -18,13 +25,19 @@ public class Composicao {
     @Column(name = "COD_COMPOSICAO")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "COD_PRODUTO")
-    private Produto produto;
+    @Column(name = "NOME")
+    private String nome;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "COD_MATERIAL")
-    private Material material;
+    @Column(name = "FOTO")
+    private String foto;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "TB_COMPOSICAO_PRODUTO", joinColumns = @JoinColumn(name = "COD_COMPOSICAO"), inverseJoinColumns = @JoinColumn(name = "COD_PRODUTO"))
+    private List<Produto> produto;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "TB_COMPOSICAO_MATERIAL", joinColumns = @JoinColumn(name = "COD_MATERIAL"), inverseJoinColumns = @JoinColumn(name = "COD_PRODUTO"))
+    private List<Material> material;
 
     @Column(name = "QUANTIDADE")
     private Double quantidade;

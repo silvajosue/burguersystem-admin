@@ -30,8 +30,8 @@ public class ComposicaoConverter {
     private ComposicaoDTO toEntityToDto(Composicao composicao) {
         ComposicaoDTO dto = new ComposicaoDTO();
         dto.setId(composicao.getId());
-        dto.setProduto(produtoConverter.toEntityToDto(composicao.getProduto()));
-        dto.setMaterial(materialConverter.toEntityToDto(composicao.getMaterial()));
+        dto.setProduto(produtoConverter.toListEntityToDto(composicao.getProduto()));
+        dto.setMaterial(materialConverter.toListEntityToDto(composicao.getMaterial()));
         dto.setQuantidade(composicao.getQuantidade());
         dto.setUnidadeMedida(composicao.getUnidadeMedida());
         return dto;
@@ -41,8 +41,8 @@ public class ComposicaoConverter {
 
         Composicao composicao = new Composicao();
 
-        composicao.setProduto(produtoConverter.toDtoToEntity(dto.getProduto()));
-        composicao.setMaterial(materialConverter.toDtoToEntity(dto.getMaterial()));
+        composicao.setProduto(produtoConverter.toListDtoToEntity(dto.getProduto()));
+        composicao.setMaterial(materialConverter.toListDtoToEntity(dto.getMaterial()));
         composicao.setQuantidade(dto.getQuantidade());
         composicao.setUnidadeMedida(dto.getUnidadeMedida());
 

@@ -48,4 +48,14 @@ public class ProdutoConverter {
 
         return produto;
     }
+
+    public List<Produto> toListDtoToEntity(List<ProdutoDTO> lista) {
+        List<Produto> list = new ArrayList<>();
+        for (ProdutoDTO dto : lista) {
+            Produto prod = toDtoToEntity(dto);
+            list.add(prod);
+        }
+
+        return list;
+    }
 }

@@ -2,6 +2,7 @@ package br.gov.fatec.burguersystem.burguersystem;
 
 import java.net.URI;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import br.gov.fatec.burguersystem.burguersystem.model.dto.MaterialDTO;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@Ignore
 public class MaterialControllerTest {
 
 	@Autowired
