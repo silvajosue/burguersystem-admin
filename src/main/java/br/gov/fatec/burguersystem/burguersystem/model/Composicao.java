@@ -31,12 +31,12 @@ public class Composicao {
     @Column(name = "FOTO")
     private String foto;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "TB_COMPOSICAO_PRODUTO", joinColumns = @JoinColumn(name = "COD_COMPOSICAO"), inverseJoinColumns = @JoinColumn(name = "COD_PRODUTO"))
     private List<Produto> produto;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "TB_COMPOSICAO_MATERIAL", joinColumns = @JoinColumn(name = "COD_MATERIAL"), inverseJoinColumns = @JoinColumn(name = "COD_PRODUTO"))
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_COMPOSICAO_MATERIAL", joinColumns = @JoinColumn(name = "COD_COMPOSICAO"), inverseJoinColumns = @JoinColumn(name = "COD_MATERIAL"))
     private List<Material> material;
 
     @Column(name = "QUANTIDADE")
