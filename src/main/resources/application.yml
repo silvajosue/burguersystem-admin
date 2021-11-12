@@ -7,7 +7,7 @@ spring:
   application:
     name: burguersystem
   datasource:
-    url: burguersystem-bd.cjitxjubet7s.sa-east-1.rds.amazonaws.com
+    url: jdbc:mariadb://burguersystem-bd.cjitxjubet7s.sa-east-1.rds.amazonaws.com:3306/burguersystem
     driver-class-name: org.mariadb.jdbc.Driver
     username: burguersystem
     password: burguersystem
