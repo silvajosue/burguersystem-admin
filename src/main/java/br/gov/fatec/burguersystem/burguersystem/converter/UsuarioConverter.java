@@ -7,10 +7,7 @@ import org.springframework.stereotype.Component;
 import br.gov.fatec.burguersystem.burguersystem.model.Usuario;
 import br.gov.fatec.burguersystem.burguersystem.model.dto.UsuarioDTO;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Component
 public class UsuarioConverter {
@@ -48,5 +45,14 @@ public class UsuarioConverter {
 		roles.add(r);
 		usuario.setRoles(roles);
 		return usuario;
+    }
+
+    public List<UsuarioDTO> toListEntityToDto(List<Usuario> lista) {
+		List<UsuarioDTO> list = new ArrayList<>();
+		for (Usuario user : lista) {
+			UsuarioDTO dto = toEntityToDto(user);
+			list.add(dto);
+		}
+		return list;
     }
 }

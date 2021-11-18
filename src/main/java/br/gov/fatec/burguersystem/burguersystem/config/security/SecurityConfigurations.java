@@ -56,7 +56,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.POST, "/login").permitAll()
-		.antMatchers(HttpMethod.GET, "/api/pedido").hasRole("GARCOM")
+		.antMatchers(HttpMethod.GET, "/api/pedido/*").hasRole("GARCOM")
 		.antMatchers(HttpMethod.GET, "/api/*").hasRole("GERENTE")
 		.antMatchers(HttpMethod.POST, "/api/*").hasRole("GERENTE")
 		.antMatchers(HttpMethod.PUT, "/api/*").hasRole("GERENTE")

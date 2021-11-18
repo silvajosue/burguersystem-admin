@@ -1,5 +1,6 @@
 package br.gov.fatec.burguersystem.burguersystem.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import br.gov.fatec.burguersystem.burguersystem.exceptions.NegocioException;
@@ -35,6 +36,12 @@ public class UsuarioService implements IUsuarioService {
 		validaDados(dto);
 		Usuario usuario = converter.toDtoToEntity(dto);
 		repository.save(usuario);
+	}
+
+	@Override
+	public List<UsuarioDTO> buscarTodos() {
+		List<Usuario> lista = repository.findAll();
+		return converter.toListEntityToDto(lista);
 	}
 
 	private void validaDados(UsuarioDTO dto) {
