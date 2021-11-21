@@ -56,6 +56,13 @@ public class ProdutoService implements IProdutoService {
         repository.save(produto);
     }
 
+    @Override
+    @Transactional
+    public void remover(ProdutoDTO dto) {
+        Produto produto = converter.toDtoToEntity(dto);
+        repository.delete(produto);
+    }
+
     // Metodo responsavel por validar os dados de entrada de produtos.
     private void validarDadosObrigatorios(ProdutoDTO dto) {
         if(!StringUtils.isBlank(dto.getNome())){

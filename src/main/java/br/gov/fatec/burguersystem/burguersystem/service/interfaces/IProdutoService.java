@@ -11,4 +11,6 @@ public interface IProdutoService {
     void cadastrar(ProdutoDTO dto);
 
     void atualizar(ProdutoDTO dto);
+
+    void remover(ProdutoDTO dto);
 }
