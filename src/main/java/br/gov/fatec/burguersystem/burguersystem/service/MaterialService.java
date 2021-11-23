@@ -60,6 +60,13 @@ public class MaterialService implements IMaterialService {
         repository.save(material);
     }
 
+    // Metodo responsavel por deletar os dados e na base
+    @Override
+    @Transactional
+    public void deletar(Long id) {
+        repository.deleteById(id);
+    }
+
     // Metodo responsavel por validar os dados de entrada dos materiais.
     private void validarDadosObrigatorios(MaterialDTO dto) {
         if(!StringUtils.isBlank(dto.getNome())){

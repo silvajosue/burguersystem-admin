@@ -12,4 +12,6 @@ public interface IMaterialService {
 
     void atualizar(MaterialDTO dto);
 
+    void deletar(Long id);
+
 }

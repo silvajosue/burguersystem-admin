@@ -40,4 +40,11 @@ public class MaterialController {
 		return ResponseEntity.ok(HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "Metodo responsável por deletar materiais na base de dados")
+	@PostMapping(value = "/deletarMaterial",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<HttpStatus> deletarMaterial(@RequestBody MaterialDTO dto) {
+		service.deletar(Long.valueOf(dto.getId()));
+		return ResponseEntity.ok(HttpStatus.OK);
+	}
+
 }
