@@ -19,8 +19,9 @@ public class ItensDoPedido {
     @Column(name = "COD_ITENS_DO_PEDIDO")
     private Long id;
 
-    @Column(name = "COD_PEDIDO")
-    private Long codPedido;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "COD_PEDIDO")
+    private Pedido codPedido;
 
     //A quantidade não é double pois, como o produto, é sempre medida com unidades.
     @Column(name = "QUANTIDADE") 

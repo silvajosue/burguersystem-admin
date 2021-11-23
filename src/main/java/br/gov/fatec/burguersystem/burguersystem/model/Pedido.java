@@ -18,11 +18,13 @@ public class Pedido {
     @Column(name = "COD_PEDIDO")
     private Long id;
 
-    @Column(name = "COD_CLIENTE")
-    private Long codCliente;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "COD_CLIENTE")
+    private Cliente codCliente;
 
-    @Column(name = "COD_ENDERECO")
-    private Long codEndereco;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "COD_ENDERECO")
+    private Endereco codEndereco;
 
     @Column(name = "MESA")
     private Long mesa;

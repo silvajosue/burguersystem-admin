@@ -8,7 +8,7 @@ public class ItensDoPedidoDTO {
     // TODO Copia exata da classe ItensDoPedido
     
     private Long id;
-    private Long codPedido;
+    private PedidoDTO codPedido;
     private Long quantidade;
     private String observacao;
 

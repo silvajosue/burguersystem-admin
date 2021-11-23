@@ -8,8 +8,8 @@ public class PedidoDTO {
     // TODO Copia exata da classe Pedido
     
     private Long id;
-    private Long codCliente;
-    private Long codEndereco;
+    private ClienteDTO codCliente;
+    private EnderecoDTO codEndereco;
     private Long mesa;
     private Double precoTotal;
 
