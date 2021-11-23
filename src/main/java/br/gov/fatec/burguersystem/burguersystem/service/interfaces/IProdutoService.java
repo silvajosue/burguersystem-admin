@@ -12,5 +12,5 @@ public interface IProdutoService {
 
     void atualizar(ProdutoDTO dto);
 
-    void remover(ProdutoDTO dto);
+    void deletar(Long id);
 }

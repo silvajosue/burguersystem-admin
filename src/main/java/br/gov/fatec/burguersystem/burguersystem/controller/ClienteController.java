@@ -33,6 +33,13 @@ public class ClienteController {
 		return ResponseEntity.ok(cliente);
 	}
 
+	@ApiOperation(value = "Metodo responsável por deletar clientes na base de dados")
+	@PostMapping(value = "/deletarCliente",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<HttpStatus> deletarCliente(@RequestBody ClienteDTO dto) {
+		service.deletar(dto);
+		return ResponseEntity.ok(HttpStatus.OK);
+	}
+
 	@ApiOperation(value = "Metodo responsável por atualizar os clientes na base de dados")
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<HttpStatus> atualizarCliente(@RequestBody ClienteDTO dto) {

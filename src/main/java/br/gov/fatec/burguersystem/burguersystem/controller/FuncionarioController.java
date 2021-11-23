@@ -26,27 +26,29 @@ public class FuncionarioController {
 	@Autowired
 	private IUsuarioService usuarioService;
 
-	@PostMapping(path = "cadastrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path = "/cadastrar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Endpoint utilizado para cadastrar novos funcionarios na base de dados")
 	public ResponseEntity<HttpStatus> cadastrar(@RequestBody UsuarioDTO dto) {
-
-		try {
-			usuarioService.cadastrar(dto);
-			return ResponseEntity.ok(HttpStatus.OK);
-		} catch (AuthenticationException e) {
-			return ResponseEntity.badRequest().build();
-		}
+		usuarioService.cadastrar(dto);
+		return ResponseEntity.ok(HttpStatus.OK);
+		
 	}
 
-	@GetMapping(path = "consultar", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/consultar", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Endpoint utilizado para cadastrar novos funcionarios na base de dados")
 	public ResponseEntity<List<UsuarioDTO>> consultar() {
-
 		try {
 			List<UsuarioDTO> lista = usuarioService.buscarTodos();
 			return ResponseEntity.ok(lista);
 		} catch (AuthenticationException e) {
 			return ResponseEntity.badRequest().build();
 		}
+	}
+
+	@ApiOperation(value = "Metodo responsável por deletar produtos na base de dados")
+	@PostMapping(value = "/deletarFuncionario",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<HttpStatus> deletarCliente(@RequestBody UsuarioDTO dto) {
+		usuarioService.deletar(dto);
+		return ResponseEntity.ok(HttpStatus.OK);
 	}
 }

@@ -61,6 +61,14 @@ public class ClienteService implements IClienteService {
         repository.save(cliente);
     }
 
+    // Metodo responsavel por deletar os dados na base
+    @Override
+    @Transactional
+    public void deletar(ClienteDTO dto) {
+        Cliente cliente = converter.toDtoToEntity(dto);
+        repository.deleteById(cliente.getId());
+    }
+    
     // Metodo responsavel por validar os dados de entrada de cliente.
     private void validarDadosObrigatorios(ClienteDTO dto) {
         if(StringUtils.isBlank(dto.getCpf())){

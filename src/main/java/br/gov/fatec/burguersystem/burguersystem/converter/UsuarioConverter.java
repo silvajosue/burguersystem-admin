@@ -14,13 +14,14 @@ public class UsuarioConverter {
 
 	public UsuarioDTO toEntityToDto(Usuario usuario) {
 		UsuarioDTO dto = new UsuarioDTO();
-		dto.setCodigoUsuario(usuario.getCodigoUsuario());
+		dto.setId(usuario.getCodigoUsuario());
 		dto.setCpf(usuario.getCpf());
 		dto.setEmail(usuario.getEmail());
 		dto.setFoto(usuario.getFoto());
 		dto.setNome(usuario.getNome());
 		dto.setTelefone(usuario.getTelefone());
 		dto.setRole(usuario.getRole());
+		dto.setAtivo(usuario.getAtivo());
 		Calendar data = Calendar.getInstance();
 		data.setTime(new Date());
 		data.add(Calendar.MINUTE, 15);
@@ -28,13 +29,14 @@ public class UsuarioConverter {
 		return dto;
 	}
 
-    public Usuario toDtoToEntity(UsuarioDTO dto) {
+    public Usuario  toDtoToEntity(UsuarioDTO dto) {
 		Usuario usuario = new Usuario();
 		usuario.setCpf(dto.getCpf());
 		usuario.setEmail(dto.getEmail());
 		usuario.setFoto(dto.getFoto());
 		usuario.setNome(dto.getNome());
 		usuario.setRole(dto.getRole());
+		usuario.setAtivo(dto.getAtivo());
 		usuario.setTelefone(dto.getTelefone());
 		usuario.setSenha(new BCryptPasswordEncoder().encode(dto.getSenha()));
 

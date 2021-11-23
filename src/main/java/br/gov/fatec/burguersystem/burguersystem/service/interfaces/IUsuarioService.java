@@ -10,5 +10,7 @@ public interface IUsuarioService {
 
     void cadastrar(UsuarioDTO dto);
 
+    void deletar(UsuarioDTO dto);
+
     List<UsuarioDTO> buscarTodos();
 }

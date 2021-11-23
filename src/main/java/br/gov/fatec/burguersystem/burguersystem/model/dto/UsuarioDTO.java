@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UsuarioDTO {
 	
-	private Long codigoUsuario;
+	private Long id;
 	private String nome;
 	private String foto;
 	private String cpf;
@@ -17,6 +17,7 @@ public class UsuarioDTO {
 	private String email;
 	private String senha;
 	private String role;
+	private Boolean ativo;
 	private TokenDTO tokenDTO;
 	private Long tempoSessao;
 	public RoleDTO roles;

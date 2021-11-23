@@ -56,11 +56,11 @@ public class ProdutoService implements IProdutoService {
         repository.save(produto);
     }
 
+    // Metodo responsavel por deletar os dados na base
     @Override
     @Transactional
-    public void remover(ProdutoDTO dto) {
-        Produto produto = converter.toDtoToEntity(dto);
-        repository.delete(produto);
+    public void deletar(Long id) {
+        repository.deleteById(id);
     }
 
     // Metodo responsavel por validar os dados de entrada de produtos.

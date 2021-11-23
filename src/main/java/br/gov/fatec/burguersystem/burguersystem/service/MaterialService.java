@@ -60,7 +60,7 @@ public class MaterialService implements IMaterialService {
         repository.save(material);
     }
 
-    // Metodo responsavel por deletar os dados e na base
+    // Metodo responsavel por deletar os dados na base
     @Override
     @Transactional
     public void deletar(Long id) {

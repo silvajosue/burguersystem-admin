@@ -39,6 +39,13 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
+	@Transactional
+	public void deletar(UsuarioDTO dto) {
+		Usuario usuario = converter.toDtoToEntity(dto);
+        repository.delete(usuario);
+	}
+
+	@Override
 	public List<UsuarioDTO> buscarTodos() {
 		List<Usuario> lista = repository.findAll();
 		return converter.toListEntityToDto(lista);

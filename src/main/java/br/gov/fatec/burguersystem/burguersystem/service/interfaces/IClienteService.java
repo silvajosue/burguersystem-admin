@@ -11,4 +11,6 @@ public interface IClienteService {
     ClienteDTO cadastrar(ClienteDTO dto);
 
     void atualizar(ClienteDTO dto);
+
+    void deletar(ClienteDTO dto);
 }

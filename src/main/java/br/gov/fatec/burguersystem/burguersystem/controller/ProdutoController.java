@@ -33,10 +33,10 @@ public class ProdutoController {
 		return ResponseEntity.ok(HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Metodo responsável por remover produtos da base de dados")
-	@PostMapping(path = "remover", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<HttpStatus> remover(@RequestBody ProdutoDTO dto) {
-		service.remover(dto);
+	@ApiOperation(value = "Metodo responsável por deletar produtos na base de dados")
+	@PostMapping(value = "/deletarProduto",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<HttpStatus> deletarCliente(@RequestBody ProdutoDTO dto) {
+		service.deletar(Long.valueOf(dto.getId()));
 		return ResponseEntity.ok(HttpStatus.OK);
 	}
 

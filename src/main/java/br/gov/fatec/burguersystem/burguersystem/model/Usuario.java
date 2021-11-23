@@ -55,6 +55,9 @@ public class Usuario  implements UserDetails {
 	@Column(name = "ROLE")
 	private String role;
 	
+	@Column(name = "ATIVO")
+	private Boolean ativo;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "TB_USUARIO_AUTORIZACAO", joinColumns = @JoinColumn(name = "CO_USUARIO"), inverseJoinColumns = @JoinColumn(name = "CO_AUTORIZACAO"))
 	private Set<Role> roles = new HashSet<>();
