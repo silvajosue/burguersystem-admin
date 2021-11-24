@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco,Long> {
     
-	Endereco findByCliente(Cliente cliente);
+	Endereco[] findByCliente(Cliente cliente);
 }

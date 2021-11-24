@@ -79,9 +79,11 @@ public class ClienteService implements IClienteService {
     @Transactional
     public void deletar(ClienteDTO dto) {
         Cliente cliente = converter.toDtoToEntity(dto);
-        Endereco e = repositoryEndereco.findByCliente(cliente);
+        Endereco[] e = repositoryEndereco.findByCliente(cliente);
         if(e != null) {
-            repositoryEndereco.deleteById(e.getId());
+            for(int i = 0; i < e.length; i++) {
+                repositoryEndereco.deleteById(e[i].getId());
+            }
         }
         repository.deleteById(cliente.getId());
     }
