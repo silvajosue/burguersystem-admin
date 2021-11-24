@@ -4,8 +4,11 @@ package br.gov.fatec.burguersystem.burguersystem.service;
 import br.gov.fatec.burguersystem.burguersystem.converter.ClienteConverter;
 import br.gov.fatec.burguersystem.burguersystem.exceptions.NegocioException;
 import br.gov.fatec.burguersystem.burguersystem.model.Cliente;
+import br.gov.fatec.burguersystem.burguersystem.model.Endereco;
 import br.gov.fatec.burguersystem.burguersystem.model.dto.ClienteDTO;
+import br.gov.fatec.burguersystem.burguersystem.model.dto.EnderecoDTO;
 import br.gov.fatec.burguersystem.burguersystem.repository.ClienteRepository;
+import br.gov.fatec.burguersystem.burguersystem.repository.EnderecoRepository;
 import br.gov.fatec.burguersystem.burguersystem.service.interfaces.IClienteService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import com.google.common.base.Optional;
 
 @Service
 public class ClienteService implements IClienteService {
@@ -23,7 +28,15 @@ public class ClienteService implements IClienteService {
 
     @Autowired
     public
+    EnderecoRepository repositoryEndereco;
+
+    @Autowired
+    public
     ClienteConverter converter;
+
+    @Autowired
+    public
+    ClienteConverter converterEndereco;
 
     // TODO Implementar metodo com as regras de negocio presentes nessa classe, a classe service encapsula todas as regras negociais.
 
@@ -66,6 +79,8 @@ public class ClienteService implements IClienteService {
     @Transactional
     public void deletar(ClienteDTO dto) {
         Cliente cliente = converter.toDtoToEntity(dto);
+        Endereco e = repositoryEndereco.findByCliente(cliente);
+        repositoryEndereco.deleteById(e.getId());
         repository.deleteById(cliente.getId());
     }
     
