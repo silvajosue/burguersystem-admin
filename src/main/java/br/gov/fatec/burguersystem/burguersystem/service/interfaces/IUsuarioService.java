@@ -13,6 +13,4 @@ public interface IUsuarioService {
     void deletar(UsuarioDTO dto);
 
     List<UsuarioDTO> buscarTodos();
-
-    List<UsuarioDTO> buscarAtivo();
 }

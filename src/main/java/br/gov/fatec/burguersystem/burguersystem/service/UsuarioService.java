@@ -41,20 +41,13 @@ public class UsuarioService implements IUsuarioService {
 	@Override
 	@Transactional
 	public void deletar(UsuarioDTO dto) {
-		Usuario usuario = repository.findByCpf(dto.getCpf());
-		usuario.setAtivo(false);
-		repository.save(usuario);
+		Usuario usuario = converter.toDtoToEntity(dto);
+        repository.delete(usuario);
 	}
 
 	@Override
 	public List<UsuarioDTO> buscarTodos() {
 		List<Usuario> lista = repository.findAll();
-		return converter.toListEntityToDto(lista);
-	}
-
-	@Override
-	public List<UsuarioDTO> buscarAtivo() {
-		List<Usuario> lista = repository.findByAtivo(true);
 		return converter.toListEntityToDto(lista);
 	}
 
